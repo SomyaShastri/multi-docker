@@ -14,3 +14,10 @@ after_success:
   - docker build -t somyashastri/multi-nginx ./nginx
   - docker build -t somyashastri/multi-server ./server
   - docker build -t somyashastri/multi-worker ./worker
+  # docker login
+  - echo "$DOCKER_PASSWORD" | docker login -u "DOCKER_ID" --password-stdin
+  # take images and push to docker hub
+  - docker push somyashastri/multi-client
+  - docker push somyashastri/multi-nginx
+  - docker push somyashastri/multi-server
+  - docker push somyashastri/multi-worker
